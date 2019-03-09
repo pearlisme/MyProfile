@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: mymatrimony
+  webservices:
+    path: /api/mymatrimony
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+#      roles:
+#        - ADMIN
+  jpa:
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    url:jdbc:h2:file:student
+    username:sa
+    password:admin
+    driver-class-name:org.h2.driver
+  h2:
+    console:
+      enabled: true
+      path: /h2
+server:
+  port: 8090
