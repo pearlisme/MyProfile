@@ -1,8 +1,7 @@
 spring:
   application:
     name: mymatrimony
-  webservices:
-    path: /api/mymatrimony
+
 #  security:
 #    user:
 #      name: admin
@@ -12,14 +11,19 @@ spring:
   jpa:
     generate-ddl: true
     show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+
   datasource:
-    url:jdbc:h2:file:student
-    username:sa
-    password:admin
-    driver-class-name:org.h2.driver
+    url: jdbc:h2:file:~/student
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
   h2:
     console:
       enabled: true
       path: /h2
 server:
   port: 8090
+
