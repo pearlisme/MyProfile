@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class ProfileService {
@@ -27,11 +26,39 @@ public class ProfileService {
     }
 
     public ResponseEntity addProfile(Profile profile){
-        profileRepository.save(profile);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity(profileRepository.save(profile), HttpStatus.ACCEPTED);
     }
 
-    public List<Profile> getAllProfiles() {
-        return profileRepository.findAll();
+    public ResponseEntity getAllProfiles() {
+        return new ResponseEntity(profileRepository.findAll(),HttpStatus.ACCEPTED);
+    }
+
+    public ResponseEntity deleteProfile(@PathVariable Long id) {
+
+        Profile profile = profileRepository.getOne(id);
+        if (profile != null) {
+
+            profileRepository.delete(profile);
+
+            return new ResponseEntity("Deletion Successful",HttpStatus.ACCEPTED);
+
+        }
+
+        return new ResponseEntity("Deletion UnSuccessful",HttpStatus.NO_CONTENT);
+    }
+
+    public Profile searchProfile(Long id) {
+
+        return profileRepository.findById(id).orElse(null);
+    }
+
+    public ResponseEntity updateProfile(Long id, Profile profile) {
+
+        if(profileRepository.findById(id).isPresent()) {
+
+            return new ResponseEntity(profileRepository.save(profile), HttpStatus.ACCEPTED);
+
+        }
+        return new ResponseEntity("No Profile Found",HttpStatus.NO_CONTENT);
     }
 }
