@@ -8,11 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * @author pearl
+ */
 @Service
 public class ProfileService {
 
 
-    private ProfileRepository profileRepository;
+    private final ProfileRepository profileRepository;
 
     @Autowired
     public ProfileService(ProfileRepository profileRepository){

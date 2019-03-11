@@ -2,12 +2,11 @@ spring:
   application:
     name: mymatrimony
 
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-#      roles:
-#        - ADMIN
+  security:
+    user:
+      name: admin
+      password: admin
+
   jpa:
     generate-ddl: true
     show-sql: true

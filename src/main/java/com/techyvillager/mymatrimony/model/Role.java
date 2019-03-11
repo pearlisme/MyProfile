@@ -12,18 +12,14 @@ import javax.persistence.Id;
 /**
  * @author pearl
  */
-@Data
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Profile {
+class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long profileId;
-    private String profileName;
-    private String mobile;
-    private String address;
-
-
+    private Long id;
+    private String roleName;
 }

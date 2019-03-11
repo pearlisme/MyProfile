@@ -9,13 +9,19 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author pearl
+ */
+@SuppressWarnings("WeakerAccess")
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
+    /**
+     * @return
+     */
     @Bean
     public Docket profileAPI(){
         return new Docket(DocumentationType.SWAGGER_2)
@@ -24,6 +30,9 @@ public class SwaggerConfig {
         .apiInfo(metaData());
     }
 
+    /**
+     * @return
+     */
     private ApiInfo metaData() {
 
         return new ApiInfo("Profile Application",
