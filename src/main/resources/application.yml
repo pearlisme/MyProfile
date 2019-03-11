@@ -26,3 +26,22 @@ spring:
 server:
   port: 8090
 
+spring:
+  profiles: local-h2
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    initialization-mode: embedded
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+        use_sql_comments: false
+      javax:
+        persistence:
+          schema-generation:
+            create-source=metadata
+            scripts.action=create
+            create-target=create.sql
